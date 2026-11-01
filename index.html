@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện ảnh của tôi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #image {
+            width: 400px;
+            height: 250px;
+            margin: 0 auto 20px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        #image p {
+            margin: 0;
+            width: 100%;
+            padding: 8px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+        }
+
+        .preview {
+            text-align: center;
+        }
+
+        .preview img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            margin: 5px;
+        }
+
+        .preview img:focus,
+        .preview img:hover {
+            outline: 3px solid #0057d8;
+        }
+    </style>
+</head>
+
+<body onload="addTabFocus()">
+    <main>
+        <h1>Đội bóng tôi yếu</h1>
+
+        <div id="image">
+            <p id="caption">Rê chuột hoặc nhấn Tab để xem ảnh.</p>
+        </div>
+
+        <div class="preview">
+            <img src="images/images (4).jpg" alt="mu 0-2 hull city" width="150" height="100" onmouseover="upDate(this)"
+                onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+            <img src="images/images (5).jpg" alt="mu 0-1 mc" width="150" height="100" onmouseover="upDate(this)"
+                onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+            <img src="images/images (3).jpg" alt="mu 0-2 alt" width="150" height="100" onmouseover="upDate(this)"
+                onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+            <img src="images/images (2).jpg" alt="mu 1-4 como" width="150" height="100" onmouseover="upDate(this)"
+                onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+            <img src="images/images (1).jpg" alt="Mu 0-3 bournemouth" width="150" height="100" onmouseover="upDate(this)"
+                onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+            <img src="images/images.jpg" alt="mu 0-2 chealse" width="150" height="100" onmouseover="upDate(this)"
+                onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        </div>
+    </main>
+
+    <script>
+        function upDate(previewPic) {
+            console.log("upDate:", previewPic.alt);
+            document.getElementById("image").style.backgroundImage =
+                "url('" + previewPic.src + "')";
+            document.getElementById("caption").innerHTML = previewPic.alt;
+        }
+
+        function unDo() {
+            console.log("unDo");
+            document.getElementById("image").style.backgroundImage = "none";
+            document.getElementById("caption").innerHTML =
+                "Rê chuột hoặc nhấn Tab để xem ảnh.";
+        }
+
+        function addTabFocus() {
+            console.log("addTabFocus đã chạy");
+            var images = document.querySelectorAll(".preview img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].setAttribute("tabindex", "0");
+            }
+        }
+    </script>
+</body>
+
+</html>
